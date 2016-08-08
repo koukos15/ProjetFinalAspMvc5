@@ -1,0 +1,92 @@
+﻿@using CaffeGest.Models
+@model Achat
+
+
+
+@{
+    ViewBag.Title = "Ajouter un achat";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.ProduitId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Produit")
+            @Html.DropDownListFor(a => a.ProduitId, selectList: ViewBag.Produits as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            htmlAttributes: new { @class = "form-control", @id = "nomProd", @onchange = "toto();" })
+            @Html.ValidationMessageFor(a => a.ProduitId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.FournisseurId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Fournisseur")
+            @Html.DropDownListFor(a => a.FournisseurId, selectList: ViewBag.Fournisseurs as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.FournisseurId)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.DateAchat, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Achat")
+            @Html.TextBoxFor(a => a.DateAchat, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
+            @Html.ValidationMessageFor(a => a.DateAchat)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(a => a.QteAchetee, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Quantite")
+            @Html.TextBoxFor(a => a.QteAchetee, new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.QteAchetee)
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Prix Unitaire", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBox("pu", "", htmlAttributes: new { @class = "form-control", @id = "pu" })
+        </div>
+
+        <div class="form-group">
+            @*faire simple input avec un chacun calcule et disabled*@
+            @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control", @ReadOnly = true })
+            @Html.ValidationMessageFor(a => a.Montant)
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="submit" />
+            </div>
+        </div>
+    </div>
+
+}
+
+@Html.ActionLink("Retour", "Index")
+
+@*pour la validation cote client*@
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    
+<script>
+
+    function toto() {
+        var idProd = document.getElementById('nomProd')
+        //$('#pu').val(idProd.value)
+
+        $(document).ready(new function () {
+            $.ajax({
+                url: @Url.Action("Index"),
+                type: 'GET',
+                success: function(result){
+                    $('#pu').val(100)
+                }
+            })
+        });
+    }
+ 
+</script>
+
+
+}
+

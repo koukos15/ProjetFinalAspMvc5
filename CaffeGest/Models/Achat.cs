@@ -6,14 +6,14 @@ using System.Web;
 
 namespace CaffeGest.Models
 {
-    public class Entree
+    public class Achat
     {
         public int Id { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime DateEntree { get; set; }
+        public DateTime DateAchat { get; set; }
 
-        public int QteEntree { get; set; }
+        public int QteAchetee { get; set; }
         public double Montant { get; set; }
 
         //cle etrangere

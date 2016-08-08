@@ -1,0 +1,82 @@
+﻿@using CaffeGest.Models
+@model List<Achat>
+
+@{
+    ViewBag.Title = "Liste des Achats";
+}
+
+<br />
+@TempData["msg"]
+<br />
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("Date de Debut de la periode", new { @class = "control-label col-md-2" })
+            @Html.TextBox("dateDebut", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Date de Fin de la periode", new { @class = "control-label col-md-2" })
+            @Html.TextBox("dateFin", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="Valider" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<br />
+@if (Model != null)
+{
+    @Html.ActionLink("Ajouter", "Add")
+    <br />
+    <br />
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom Produit</th>
+            <th>Nom Fournisseur</th>
+            <th>Date</th>
+            <th>Quantite</th>
+            <th>Prix Unitaire</th>
+            <th>Montant</th>
+            <th>Action</th>
+        </tr>
+        @foreach (Achat a in Model)
+        {
+            <tr>
+                <td>@a.Id</td>
+                <td>@a.Produit.Nom</td>
+                <td>@a.Fournisseur.Nom</td>
+                <td format ="{0:yyyy-MM-dd}" Type = "date">@a.DateAchat</td>
+                <td>@a.QteAchetee</td>
+                <td>@a.Produit.PU</td>
+                <td>@a.Montant</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { id = a.Id })
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = a.Id },
+                htmlAttributes: new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btnDelete").click(function () {
+                return confirm("Confirmer la suppression:");
+            });
+        });
+
+    </script>
+}

@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AchatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,12 +206,31 @@
     <Compile Include="Migrations\201608061829552_first_migration.Designer.cs">
       <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608071425258_seconde migration.cs" />
+    <Compile Include="Migrations\201608071425258_seconde migration.Designer.cs">
+      <DependentUpon>201608071425258_seconde migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608080400124_3eme migration.cs" />
+    <Compile Include="Migrations\201608080400124_3eme migration.Designer.cs">
+      <DependentUpon>201608080400124_3eme migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608080548101_4eme migration.cs" />
+    <Compile Include="Migrations\201608080548101_4eme migration.Designer.cs">
+      <DependentUpon>201608080548101_4eme migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608080604487_5eme migration.cs" />
+    <Compile Include="Migrations\201608080604487_5eme migration.Designer.cs">
+      <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\DAL\AchatManager.cs" />
+    <Compile Include="Models\DAL\FournisseurManager.cs" />
+    <Compile Include="Models\DAL\ProduitManager.cs" />
     <Compile Include="Models\Depense.cs" />
-    <Compile Include="Models\Entree.cs" />
+    <Compile Include="Models\Achat.cs" />
     <Compile Include="Models\Fournisseur.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -282,6 +302,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Achat\Index.cshtml" />
+    <Content Include="Views\Achat\Add.cshtml" />
+    <Content Include="Views\Achat\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +320,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608061829552_first_migration.resx">
       <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608071425258_seconde migration.resx">
+      <DependentUpon>201608071425258_seconde migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608080400124_3eme migration.resx">
+      <DependentUpon>201608080400124_3eme migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608080548101_4eme migration.resx">
+      <DependentUpon>201608080548101_4eme migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608080604487_5eme migration.resx">
+      <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

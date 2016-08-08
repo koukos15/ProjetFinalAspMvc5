@@ -102,3 +102,7 @@ C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.dll
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.pdb
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.first_migration.resources
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.csproj.GenerateResource.Cache
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.secondemigration.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._3ememigration.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._4ememigration.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._5ememigration.resources
