@@ -14,5 +14,9 @@ namespace CaffeGest.Models
         [StringLength(50, MinimumLength = 3,
         ErrorMessage = "entre un nom entre 3 et 50 characteres")]
         public string Nom { get; set; }
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
+      
+        public string ApplicationUserId { get; set; }
     }
 }

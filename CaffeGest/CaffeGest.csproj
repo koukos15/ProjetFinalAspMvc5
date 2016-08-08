@@ -196,8 +196,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\FournisseurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProduitController.cs" />
+    <Compile Include="Controllers\TypeClientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -205,10 +210,30 @@
     <Compile Include="Migrations\201608061829552_first_migration.Designer.cs">
       <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608071055286_poidsMigre.cs" />
+    <Compile Include="Migrations\201608071055286_poidsMigre.Designer.cs">
+      <DependentUpon>201608071055286_poidsMigre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608071126517_Migre.cs" />
+    <Compile Include="Migrations\201608071126517_Migre.Designer.cs">
+      <DependentUpon>201608071126517_Migre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608072305429_MigreImg.cs" />
+    <Compile Include="Migrations\201608072305429_MigreImg.Designer.cs">
+      <DependentUpon>201608072305429_MigreImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201608080609594_MigreUser.cs" />
+    <Compile Include="Migrations\201608080609594_MigreUser.Designer.cs">
+      <DependentUpon>201608080609594_MigreUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\DAL\ClientServices.cs" />
+    <Compile Include="Models\DAL\FournisseurServices.cs" />
+    <Compile Include="Models\DAL\TypeClientService.cs" />
+    <Compile Include="Models\DAL\UserServices.cs" />
     <Compile Include="Models\Depense.cs" />
     <Compile Include="Models\Entree.cs" />
     <Compile Include="Models\Fournisseur.cs" />
@@ -220,6 +245,8 @@
     <Compile Include="Models\TypeSortie.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\DAL\CategoriesServices.cs" />
+    <Compile Include="Models\DAL\ProduitsServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +309,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Produit\ListProduits.cshtml" />
+    <Content Include="Views\Categorie\ListCategories.cshtml" />
+    <Content Include="Views\Produit\Add.cshtml" />
+    <Content Include="Views\Produit\Edit.cshtml" />
+    <Content Include="Views\Categorie\Add.cshtml" />
+    <Content Include="Views\Categorie\Edit.cshtml" />
+    <Content Include="Views\TypeClient\ListTypeClients.cshtml" />
+    <Content Include="Views\TypeClient\Add.cshtml" />
+    <Content Include="Views\TypeClient\Edit.cshtml" />
+    <Content Include="Views\Client\Add.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\ListClients.cshtml" />
+    <Content Include="Views\fournisseur\ListFournisseurs.cshtml" />
+    <Content Include="Views\fournisseur\Add.cshtml" />
+    <Content Include="Views\fournisseur\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +339,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608061829552_first_migration.resx">
       <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608071055286_poidsMigre.resx">
+      <DependentUpon>201608071055286_poidsMigre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608071126517_Migre.resx">
+      <DependentUpon>201608071126517_Migre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608072305429_MigreImg.resx">
+      <DependentUpon>201608072305429_MigreImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608080609594_MigreUser.resx">
+      <DependentUpon>201608080609594_MigreUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

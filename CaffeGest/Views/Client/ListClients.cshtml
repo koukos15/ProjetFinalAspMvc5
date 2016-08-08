@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@using CaffeGest.Models
+@model List<Client>
+
+
+<h2>Les Clients</h2>
+<div>
+    @Html.ActionLink("Ajouter", "Add")
+
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Telephone</th>
+            <th>Email</th>
+            <th>adresse</th>
+            <th>Type de Client</th>
+            <th>Ops</th>
+        </tr>
+        @foreach (Client c in Model)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Nom</td>
+                <td>@c.Tel</td>
+                <td>@c.Email</td>
+                <td>@c.Adresse</td>
+                <td>@c.TypeClient.Nom</td>
+                <td>
+                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id })
+                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btnDelete").click(function () {
+                return confirm("delete it?");
+            });
+        });
+
+    </script>
+}

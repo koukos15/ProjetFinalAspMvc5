@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using CaffeGest.Models
+@model List<Categorie>
+
+<h2>Les Categories de produit</h2>
+<div>
+    @Html.ActionLink("Ajouter", "Add")
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Options</th>
+        </tr>
+        @foreach (Categorie c in Model)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.Nom</td>
+                <td>
+                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id })
+                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btnDelete").click(function () {
+                return confirm("delete it?");
+            });
+        });
+
+    </script>
+}

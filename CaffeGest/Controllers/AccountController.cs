@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CaffeGest.Models;
+using CaffeGest.Models.DAL;
 
 namespace CaffeGest.Controllers
 {
@@ -156,14 +157,21 @@ namespace CaffeGest.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // Pour plus d'informations sur l'activation de la confirmation du compte et la réinitialisation du mot de passe, consultez http://go.microsoft.com/fwlink/?LinkID=320771
                     // Envoyer un message électronique avec ce lien
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmez votre compte", "Confirmez votre compte en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
+                    User utilisateur = new User
+                    {
+                        Nom = model.Nom,
+                        ApplicationUserId = user.Id
 
-                    return RedirectToAction("Index", "Home");
+                    };
+                    UserServices.Add(utilisateur);
+
+                    return RedirectToAction("ListProduits", "Produit");
                 }
                 AddErrors(result);
             }
@@ -421,6 +429,25 @@ namespace CaffeGest.Controllers
             }
 
             base.Dispose(disposing);
+        }
+        public ActionResult AjouterAdminUser()
+        {
+            if (this.Request.IsLocal)
+            {
+
+                if (UserManager.FindByName("admin@isi.com") == null)
+                {
+                    var user = new ApplicationUser { UserName = "admin@isi.com", Email = "admin@isi.com" };
+                    var result = UserManager.Create(user, "Abc123...");
+                    if (result.Succeeded)
+                    {
+                        //ajouter un user dans un role
+                        UserManager.AddToRole(user.Id, "Admin");
+                        return Content("admin user added");
+                    }
+                }
+            }
+            return Content("admin user not added");
         }
 
         #region Applications auxiliaires

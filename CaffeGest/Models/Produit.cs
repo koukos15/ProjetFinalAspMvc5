@@ -14,10 +14,12 @@ namespace CaffeGest.Models
         ErrorMessage = "entre un nom entre 3 et 50 characteres")]
         public string Nom { get; set; }
         public double PU { get; set; }
-        public int QuantiteStock { get; set; }
+        public int? QuantiteStock { get; set; }
+        public int Grammage { get; set; }
+        public string Image { get; set; }
 
         //cle etrangere
-        public int CategorieId { get; set; }
+        public Nullable<int> CategorieId { get; set; }
 
         //propriete de navigation
         public virtual Categorie Categorie { get; set; }
