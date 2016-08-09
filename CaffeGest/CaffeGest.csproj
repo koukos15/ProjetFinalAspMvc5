@@ -197,8 +197,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AchatController.cs" />
+    <Compile Include="Controllers\BilanController.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\DepenseController.cs" />
+    <Compile Include="Controllers\fournisseurController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProduitController.cs" />
+    <Compile Include="Controllers\SortieController.cs" />
+    <Compile Include="Controllers\TypeClientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -222,13 +230,26 @@
     <Compile Include="Migrations\201608080604487_5eme migration.Designer.cs">
       <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608090118300_6e migration.cs" />
+    <Compile Include="Migrations\201608090118300_6e migration.Designer.cs">
+      <DependentUpon>201608090118300_6e migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\DAL\AchatManager.cs" />
+    <Compile Include="Models\DAL\CategoriesServices.cs" />
+    <Compile Include="Models\DAL\ClientServices.cs" />
+    <Compile Include="Models\DAL\DepenseManager.cs" />
     <Compile Include="Models\DAL\FournisseurManager.cs" />
+    <Compile Include="Models\DAL\FournisseurServices.cs" />
     <Compile Include="Models\DAL\ProduitManager.cs" />
+    <Compile Include="Models\DAL\ProduitsServices.cs" />
+    <Compile Include="Models\DAL\SortieManager.cs" />
+    <Compile Include="Models\DAL\TypeClientService.cs" />
+    <Compile Include="Models\DAL\TypeSortieManager.cs" />
+    <Compile Include="Models\DAL\UserServices.cs" />
     <Compile Include="Models\Depense.cs" />
     <Compile Include="Models\Achat.cs" />
     <Compile Include="Models\Fournisseur.cs" />
@@ -305,6 +326,16 @@
     <Content Include="Views\Achat\Index.cshtml" />
     <Content Include="Views\Achat\Add.cshtml" />
     <Content Include="Views\Achat\Edit.cshtml" />
+    <Content Include="Views\Achat\partialView.cshtml" />
+    <Content Include="Views\Sortie\Index.cshtml" />
+    <Content Include="Views\Sortie\Add.cshtml" />
+    <Content Include="Views\Sortie\Edit.cshtml" />
+    <Content Include="Views\Sortie\partialView.cshtml" />
+    <Content Include="Views\Depense\Index.cshtml" />
+    <Content Include="Views\Depense\Edit.cshtml" />
+    <Content Include="Views\Depense\Add.cshtml" />
+    <Content Include="Views\Bilan\Index.cshtml" />
+    <Content Include="Views\Account\Accueil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608080604487_5eme migration.resx">
       <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608090118300_6e migration.resx">
+      <DependentUpon>201608090118300_6e migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Collections.Generic;
 using CaffeGest.Services;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class ProduitController : Controller
     {
         // GET: Produit
@@ -50,12 +50,14 @@ namespace CaffeGest.Controllers
             return View(produit);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             ProduitsServices.Delete(id);
             return this.RedirectToAction("ListProduits");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
 
@@ -78,6 +80,7 @@ namespace CaffeGest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Produit produit)
         {
             if (this.ModelState.IsValid)

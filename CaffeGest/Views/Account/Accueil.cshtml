@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "GESCAFECAM-PRODUCTION-CM";
+}
+<br />
+<h1 class="text-center">@ViewBag.Title</h1> <br /><br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Menu</h2>
+    </div>
+    <br />
+    <div class="text-center">
+        @Html.ActionLink("Gestion des Achats", actionName:"index", controllerName :"Achat", routeValues:"", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Sorties", actionName: "index", controllerName: "Sortie", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Categories", actionName: "ListCategories", controllerName: "Categorie", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })<br /><br />
+        @Html.ActionLink("Gestion des Depenses", actionName: "index", controllerName: "Depense", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Fournisseurs", actionName: "ListFournisseurs", controllerName: "Fournisseur", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Produits", actionName: "ListProduits", controllerName: "Produit", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })<br /><br />
+        @Html.ActionLink("Gestion de TypeClient", actionName: "ListTypeClients", controllerName: "TypeClient", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Clients", actionName: "ListClients", controllerName: "Client", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        @Html.ActionLink("Gestion des Types Sorties", actionName: "index", controllerName: "TypeSortie", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+
+        @if (User.IsInRole("Admin"))
+        {
+            @Html.ActionLink("Gestion des Achats", actionName: "index", controllerName: "Bilan", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+        }
+    </div>
+    <br /><br />
+</div>

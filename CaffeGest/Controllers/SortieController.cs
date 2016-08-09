@@ -10,51 +10,57 @@ using System.Web.Mvc;
 namespace CaffeGest.Controllers
 {
     [Authorize]
-    public class AchatController : Controller
+    public class SortieController : Controller
     {
-
-        // GET: Achat
+        // GET: Sortie
         public ActionResult Index()
-        {
+        { 
             string dateDebut = this.Request.Form.Get("dateDebut");
             string dateFin = this.Request.Form.Get("dateFin");
+            string typeSortie = this.Request.Form.Get("typeSortie");
 
-            if (dateDebut != null && dateFin != null)
+            //list de sortie
+            ViewBag.TypeSorties = TypeSortieManager.GetListItemNom();
+
+
+            if (dateDebut != null && dateFin != null && typeSortie != null)
             {
                 DateTime dateDebut1 = DateTime.Parse(this.Request.Form.Get("dateDebut"));
                 DateTime dateFin1 = DateTime.Parse(this.Request.Form.Get("dateFin"));
 
-                List<Achat> mesAchats = AchatManager.GetAll(dateDebut1, dateFin1);
-                return View(mesAchats);
+                List<Sortie> mesSorties = SortieManager.GetAll(dateDebut1, dateFin1, typeSortie);
+                return View(mesSorties);
             }
 
             return View();
-           
+
         }
 
         public ActionResult Add()
         {
-            ViewBag.Fournisseurs = FournisseurManager.GetListItem(-1);
+            ViewBag.Clients = ClientServices.GetListItem(-1);
             ViewBag.Produits = ProduitManager.GetListItem(-1);
+            ViewBag.TypeSorties = TypeSortieManager.GetListItem(-1);
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(Achat unAchat)
+        public ActionResult Add(Sortie sortie)
         {
             if (this.ModelState.IsValid)
             {
-                Produit unProduit = ProduitsServices.GetById(unAchat.ProduitId);
-                unProduit.QuantiteStock += unAchat.QteAchetee;
-                AchatManager.Add(unAchat);
+                Produit unProduit = ProduitsServices.GetById(sortie.ProduitId);
+                unProduit.QuantiteStock -= sortie.QteSortie;
+                SortieManager.Add(sortie);
 
-                TempData["msg"] = "l'achat a ete ajoute avec succces";
+                TempData["msg"] = "la sortie du produit a ete ajoute avec succces";
                 return RedirectToAction("index");
             }
 
-            ViewBag.Fournisseurs = FournisseurManager.GetListItem(-1);
+            ViewBag.Clients = ClientServices.GetListItem(-1);
             ViewBag.Produits = ProduitManager.GetListItem(-1);
-            return View(unAchat);
+            ViewBag.TypeSorties = TypeSortieManager.GetListItem(-1);
+            return View(sortie);
         }
 
         [Authorize(Roles = "Admin")]
@@ -62,14 +68,15 @@ namespace CaffeGest.Controllers
         {
             if (id != null)
             {
-                Achat unAchat = AchatManager.GetById(id.Value);
+                Sortie sortie = SortieManager.GetById(id.Value);
 
-                if (unAchat != null)
+                if (sortie != null)
                 {
-                    ViewBag.Fournisseurs = FournisseurManager.GetListItem(unAchat.Id);
-                    ViewBag.Produits = ProduitManager.GetListItem(unAchat.Id);
+                    ViewBag.Clients = ClientServices.GetListItem(sortie.Id);
+                    ViewBag.Produits = ProduitManager.GetListItem(sortie.Id);
+                    ViewBag.TypeSorties = TypeSortieManager.GetListItem(sortie.Id);
 
-                    return View(unAchat);
+                    return View(sortie);
                 }
 
             }
@@ -78,13 +85,13 @@ namespace CaffeGest.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(Achat unAchat)
+        public ActionResult Edit(Sortie sortie)
         {
             if (this.ModelState.IsValid)
             {
-               
-                AchatManager.Edit(unAchat);
-                TempData.Add("msg", "l'achat a ete modifie avec succces");
+
+                SortieManager.Edit(sortie);
+                TempData.Add("msg", "la sortie du produit a ete modifie avec succces");
                 return RedirectToAction("Index");
             }
 
@@ -94,8 +101,8 @@ namespace CaffeGest.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            AchatManager.delete(id);
-            TempData.Add("msg", "l'achat a ete supprime avec succces");
+            SortieManager.delete(id);
+            TempData.Add("msg", "la sortie a ete supprime avec succces");
             return RedirectToAction("Index");
         }
 
@@ -105,7 +112,7 @@ namespace CaffeGest.Controllers
             if (produit != null)
             {
                 ViewBag.Pu = produit.PU;
-            }          
+            }
 
             return View();
         }

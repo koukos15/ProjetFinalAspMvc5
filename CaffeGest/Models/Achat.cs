@@ -13,6 +13,7 @@ namespace CaffeGest.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateAchat { get; set; }
 
+        [Range(1, 999999999, ErrorMessage = "la quantite ne peut etre inferieir a 1 ")]
         public int QteAchetee { get; set; }
         public double Montant { get; set; }
 

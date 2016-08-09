@@ -13,7 +13,7 @@ namespace CaffeGest.Models
         [StringLength(50, MinimumLength = 3,
         ErrorMessage = "entre un nom entre 3 et 50 characteres")]
         public string Nom { get; set; }
-        public double? PU { get; set; }
+        public double PU { get; set; }
         public int QuantiteStock { get; set; }
         public int Poids { get; set; }
         public string img { get; set; }

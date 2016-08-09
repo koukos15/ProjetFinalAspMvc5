@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class TypeClientController : Controller
     {
         // GET: TypeClient
@@ -35,6 +36,7 @@ namespace CaffeGest.Controllers
             return View(tp);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             TypeClientService.Delete(id);
@@ -55,6 +57,7 @@ namespace CaffeGest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(TypeClient tp)
         {
             if (this.ModelState.IsValid)

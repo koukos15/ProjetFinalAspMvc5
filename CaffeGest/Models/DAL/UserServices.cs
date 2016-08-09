@@ -12,7 +12,7 @@ namespace CaffeGest.Models.DAL
             List<User> lesUsers = null;
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                lesUsers = ctx.Users.ToList();
+                lesUsers = ctx.mesUsers.ToList();
             }
             return lesUsers;
         }
@@ -21,7 +21,7 @@ namespace CaffeGest.Models.DAL
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                ctx.Users.Add(user);
+                ctx.mesUsers.Add(user);
                 ctx.SaveChanges();
             }
         }
@@ -31,7 +31,7 @@ namespace CaffeGest.Models.DAL
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
                 user = GetById(id);
-                ctx.Users.Remove(user);
+                ctx.mesUsers.Remove(user);
                 ctx.SaveChanges();
             }
         }
@@ -40,12 +40,12 @@ namespace CaffeGest.Models.DAL
             User u = null;
             if (ctx != null)
             {
-                u = ctx.Users.Where(us => us.Id == id).FirstOrDefault();
+                u = ctx.mesUsers.Where(us => us.Id == id).FirstOrDefault();
             }else
             {
                 using (ctx = new ApplicationDbContext())
                 {
-                    u = ctx.Users.Where(us => us.Id == id).FirstOrDefault();
+                    u = ctx.mesUsers.Where(us => us.Id == id).FirstOrDefault();
                 }
             }
             return u;

@@ -106,3 +106,4 @@ C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.secondemigrat
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._3ememigration.resources
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._4ememigration.resources
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._5ememigration.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations._6emigration.resources

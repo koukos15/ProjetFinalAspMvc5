@@ -80,7 +80,7 @@ namespace CaffeGest.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Accueil");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -448,6 +448,43 @@ namespace CaffeGest.Controllers
                 }
             }
             return Content("admin user not added");
+        }
+
+        [AllowAnonymous]
+        public ActionResult AjouterUsers()
+        {
+
+            if (UserManager.FindByName("admin@cafe-guess.com") == null)
+            {
+                var user = new ApplicationUser { UserName = "admin@cafe-guess.com", Email = "admin@cafe-guess.com" };
+                var result = UserManager.Create(user, "Abc123...");
+                if (result.Succeeded)
+                {
+                    //ajouter un user dans un role
+                    UserManager.AddToRole(user.Id, "Admin");
+
+                }
+            }
+
+            if (UserManager.FindByName("francois@cafe-guess.com") == null)
+            {
+                var user = new ApplicationUser { UserName = "francois@cafe-guess.com", Email = "francois@cafe-guess.com" };
+                var result = UserManager.Create(user, "Abc123...");
+                if (result.Succeeded)
+                {
+                    //ajouter un user dans un role
+                    UserManager.AddToRole(user.Id, "User");
+
+                }
+            }
+
+            return Content("les utilisateurs ont ete ajoutes");
+
+        }
+
+        public ActionResult Accueil()
+        {
+            return View();
         }
 
         #region Applications auxiliaires

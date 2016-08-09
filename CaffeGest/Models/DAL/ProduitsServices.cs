@@ -64,7 +64,7 @@ namespace CaffeGest.Services
                     p.Nom = prod.Nom;
                     p.PU = prod.PU;
                     p.QuantiteStock = prod.QuantiteStock;
-                    p.Grammage = prod.Grammage;
+                    p.Poids = prod.Poids;
                     p.CategorieId = prod.CategorieId;
                     ctx.SaveChanges();
                 }

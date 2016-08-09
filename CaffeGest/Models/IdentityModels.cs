@@ -39,7 +39,7 @@ namespace CaffeGest.Models
         public virtual DbSet<Sortie> Sorties { get; set; }
         public virtual DbSet<TypeClient> TypeClients { get; set; }
         public virtual DbSet<TypeSortie> TypeSorties { get; set; }
-        public virtual DbSet<User> MesUsers { get; set; }
+        public virtual DbSet<User> mesUsers { get; set; }
         public virtual DbSet<Fournisseur> Fournissseurs { get; set; }
 
     }

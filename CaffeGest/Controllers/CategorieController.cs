@@ -8,10 +8,10 @@ using System.Web.Mvc;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class CategorieController : Controller
     {
         // GET: Categorie
-
         public ActionResult ListCategories()
         {
             List<Categorie> ListCategories = CategoriesServices.GetAllCategories();
@@ -35,12 +35,14 @@ namespace CaffeGest.Controllers
             return View(cat);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             CategoriesServices.Delete(id);
             return this.RedirectToAction("ListCategories");
         }
-    
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id != null)
@@ -55,6 +57,7 @@ namespace CaffeGest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Categorie Categorie)
         {
             if (this.ModelState.IsValid)

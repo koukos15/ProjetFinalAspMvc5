@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class FournisseurController : Controller
     {
         // GET: fournisseur

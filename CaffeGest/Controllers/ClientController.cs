@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         // GET: Client
@@ -49,12 +50,14 @@ namespace CaffeGest.Controllers
             return View(client);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             ClientServices.Delete(id);
             return this.RedirectToAction("ListClients");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id != null)
@@ -76,6 +79,7 @@ namespace CaffeGest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Client client)
         {
             if (this.ModelState.IsValid)

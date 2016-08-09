@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace CaffeGest.Models.DAL
 {
@@ -15,6 +16,19 @@ namespace CaffeGest.Models.DAL
                 LesClients = ctx.Clients.Include("TypeClient").ToList();
             }
             return LesClients;
+        }
+
+        public static IEnumerable<SelectListItem> GetListItem(int id)
+        {
+            IEnumerable<SelectListItem> maList = GetAllClient().Select(
+                c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Nom,
+                    Selected = (id == c.Id)
+                }
+            );
+            return maList;
         }
 
         public static void AddClient(Client client)
