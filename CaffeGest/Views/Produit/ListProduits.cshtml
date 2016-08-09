@@ -1,41 +1,53 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Produit> prods = this.ViewBag.Produits;
+
 }
 @using CaffeGest.Models
 @model List<Produit>
 
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="mettre un grand coe = gestion des produits">Les Produits</h2>
+        <div>
+            @Html.ActionLink("Ajouter", "Add")
 
-<h2>Les Produits</h2>
-<div>
-    @Html.ActionLink("Ajouter", "Add")
-    
-    <table class="table">
-        <tr>
-            <th>id</th>
-            <th>Nom</th>
-            <th>Prix unitaire</th>
-            <th>Grammage</th>
-            <th>Quantite de stock</th>
-            <th>Categorie</th>
-            <th>Ops</th>
-        </tr>
-        @foreach (Produit p in prods)
-        {
-            <tr>
-                <td>@p.Id</td>
-                <td>@p.Nom</td>
-                <td>@p.PU</td>
-                <td>@p.Grammage</td>
-                <td>@p.QuantiteStock</td>
-                <td>@p.Categorie.Nom</td>
-                <td>
-                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = p.Id })
-                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = p.Id }, htmlAttributes: new { @class = "btnDelete" })
-                </td>
-            </tr>
-        }
-    </table>  
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>Nom</th>
+                    <th>Prix unitaire</th>
+                    <th>Poids</th>
+                    <th>Quantite de stock</th>
+                    <th>Categorie</th>
+                    <th>Fournisseurs</th>
+                    <th>Ops</th>
+                </tr>
+                @foreach (Produit p in prods)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Nom</td>
+                        <td>@p.PU</td>
+                        <td>@p.Poids</td>
+                        <td>@p.QuantiteStock</td>
+                        <td>@p.Categorie.Nom</td>
+                        <td>
+                            @foreach (Fournisseur f in p.Fournisseurs)
+                {
+                                @Html.ActionLink(@f.Nom, actionName: "Details", controllerName: "Fournisseur", routeValues: new { id = f.Id }, htmlAttributes: new { @Class = "control-label col-md-2" })
+                            }
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = p.Id })
+                            @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = p.Id }, htmlAttributes: new { @class = "btnDelete" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
 @section scripts{
     <script>

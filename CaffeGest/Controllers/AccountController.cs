@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CaffeGest.Models;
 using CaffeGest.Models.DAL;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Net;
 
 namespace CaffeGest.Controllers
 {
@@ -430,14 +432,36 @@ namespace CaffeGest.Controllers
 
             base.Dispose(disposing);
         }
+        public ActionResult AddRoleAdmin()
+        {
+            //this.Request.IsLocal  ==> le ip de request est l'ip du server
+            if (this.Request.IsLocal)
+            {
+                using (ApplicationDbContext ctx = new ApplicationDbContext())
+                {
+                    if (!ctx.Roles.Any(r => r.Name == "Admin"))
+                    {
+                        ctx.Roles.Add(new IdentityRole { Name = "Admin" });
+                        ctx.SaveChanges();
+                    }
+
+                }
+                return Content("role admin added");
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
         public ActionResult AjouterAdminUser()
         {
             if (this.Request.IsLocal)
             {
 
-                if (UserManager.FindByName("admin@isi.com") == null)
+                if (UserManager.FindByName("admin@lbc.com") == null)
                 {
-                    var user = new ApplicationUser { UserName = "admin@isi.com", Email = "admin@isi.com" };
+                    var user = new ApplicationUser { UserName = "admin@lbc.com", Email = "admin@lbc.com" };
                     var result = UserManager.Create(user, "Abc123...");
                     if (result.Succeeded)
                     {
@@ -448,6 +472,34 @@ namespace CaffeGest.Controllers
                 }
             }
             return Content("admin user not added");
+        }
+
+        public ActionResult AddRoleUser()
+        {
+            //this.Request.IsLocal  ==> le ip de request est l'ip du server
+            if (this.Request.IsLocal)
+            {
+                using (ApplicationDbContext ctx = new ApplicationDbContext())
+                {
+                    if (!ctx.Roles.Any(r => r.Name == "User"))
+                    {
+                        ctx.Roles.Add(new IdentityRole { Name = "User" });
+                        ctx.SaveChanges();
+                    }
+                }
+                return Content("role User added");
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult AddUserToRole(string userId, string rolename)
+        {
+            this.UserManager.AddToRole(userId, rolename);
+            return Content(string.Format("userId :{0} added in {1}", userId, rolename));
         }
 
         #region Applications auxiliaires

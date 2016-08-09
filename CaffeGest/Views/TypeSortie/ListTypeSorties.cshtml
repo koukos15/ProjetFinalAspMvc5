@@ -2,11 +2,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using CaffeGest.Models
-@model List<TypeClient>
+@model List<TypeSortie>
+
 
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Les Categories de produit</h2>
+        <h2 class="mettre un grand coe = gestion des produits">Liste des Sorties</h2>
         <div>
             @Html.ActionLink("Ajouter", "Add")
 
@@ -14,16 +15,17 @@
                 <tr>
                     <th>id</th>
                     <th>Nom</th>
+
                     <th>Options</th>
                 </tr>
-                @foreach (TypeClient tp in Model)
+                @foreach (TypeSortie ts in Model)
                 {
                     <tr>
-                        <td>@tp.Id</td>
-                        <td>@tp.Nom</td>
+                        <td>@ts.Id</td>
+                        <td>@ts.Nom</td>
                         <td>
-                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = tp.Id })
-                            @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = tp.Id }, htmlAttributes: new { @class = "btnDelete" })
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = ts.Id })
+                            @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = ts.Id }, htmlAttributes: new { @class = "btnDelete" })
                         </td>
                     </tr>
                 }

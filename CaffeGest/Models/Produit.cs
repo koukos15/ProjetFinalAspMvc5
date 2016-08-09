@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,16 +16,22 @@ namespace CaffeGest.Models
         public string Nom { get; set; }
         public double PU { get; set; }
         public int? QuantiteStock { get; set; }
-        public int Grammage { get; set; }
-        public string Image { get; set; }
+        public int Poids { get; set; }
+        public string Img { get; set; }
 
         //cle etrangere
         public Nullable<int> CategorieId { get; set; }
+
+        [NotMapped]
+        public List<int> FournisseursId { get; set; }
 
         //propriete de navigation
         public virtual Categorie Categorie { get; set; }
         public virtual ICollection<Entree> Entrees { get; set; }
         public virtual ICollection<Sortie> Sorties { get; set; }
         public virtual ICollection<Fournisseur> Fournisseurs { get; set; }
+
+        //public HttpPostedFileBase ProduitPicture { get; set; }
+
     }
 }

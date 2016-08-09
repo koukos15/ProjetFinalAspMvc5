@@ -100,9 +100,9 @@ C:\Dev\ProjetFinalAspMvc5\CaffeGest\bin\fr\Microsoft.Owin.Security.MicrosoftAcco
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.csprojResolveAssemblyReference.cache
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.dll
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.pdb
-C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.first_migration.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.migre.resources
 C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.csproj.GenerateResource.Cache
-C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.poidsMigre.resources
-C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.Migre.resources
-C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.MigreImg.resources
-C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.MigreUser.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.migre1.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.migre2.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.migre3.resources
+C:\Dev\ProjetFinalAspMvc5\CaffeGest\obj\Debug\CaffeGest.Migrations.migre4.resources

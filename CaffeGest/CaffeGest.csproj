@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\FournisseurController.cs" />
@@ -203,28 +204,29 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Controllers\TypeClientController.cs" />
+    <Compile Include="Controllers\TypeSortieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608061829552_first_migration.cs" />
-    <Compile Include="Migrations\201608061829552_first_migration.Designer.cs">
-      <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
+    <Compile Include="Migrations\201608090652595_migre.cs" />
+    <Compile Include="Migrations\201608090652595_migre.Designer.cs">
+      <DependentUpon>201608090652595_migre.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608071055286_poidsMigre.cs" />
-    <Compile Include="Migrations\201608071055286_poidsMigre.Designer.cs">
-      <DependentUpon>201608071055286_poidsMigre.cs</DependentUpon>
+    <Compile Include="Migrations\201608090656144_migre1.cs" />
+    <Compile Include="Migrations\201608090656144_migre1.Designer.cs">
+      <DependentUpon>201608090656144_migre1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608071126517_Migre.cs" />
-    <Compile Include="Migrations\201608071126517_Migre.Designer.cs">
-      <DependentUpon>201608071126517_Migre.cs</DependentUpon>
+    <Compile Include="Migrations\201608091318564_migre2.cs" />
+    <Compile Include="Migrations\201608091318564_migre2.Designer.cs">
+      <DependentUpon>201608091318564_migre2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608072305429_MigreImg.cs" />
-    <Compile Include="Migrations\201608072305429_MigreImg.Designer.cs">
-      <DependentUpon>201608072305429_MigreImg.cs</DependentUpon>
+    <Compile Include="Migrations\201608091401216_migre3.cs" />
+    <Compile Include="Migrations\201608091401216_migre3.Designer.cs">
+      <DependentUpon>201608091401216_migre3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608080609594_MigreUser.cs" />
-    <Compile Include="Migrations\201608080609594_MigreUser.Designer.cs">
-      <DependentUpon>201608080609594_MigreUser.cs</DependentUpon>
+    <Compile Include="Migrations\201608091402354_migre4.cs" />
+    <Compile Include="Migrations\201608091402354_migre4.Designer.cs">
+      <DependentUpon>201608091402354_migre4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -232,13 +234,16 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\DAL\ClientServices.cs" />
     <Compile Include="Models\DAL\FournisseurServices.cs" />
+    <Compile Include="Models\DAL\PhotoServices.cs" />
     <Compile Include="Models\DAL\TypeClientService.cs" />
+    <Compile Include="Models\DAL\TypeSortieServices.cs" />
     <Compile Include="Models\DAL\UserServices.cs" />
     <Compile Include="Models\Depense.cs" />
     <Compile Include="Models\Entree.cs" />
     <Compile Include="Models\Fournisseur.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Models\Sortie.cs" />
     <Compile Include="Models\TypeClient.cs" />
@@ -256,6 +261,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Arabica.jpg" />
+    <Content Include="Image\Arabica1.jpg" />
+    <Content Include="Image\cafeCerise.jpg" />
+    <Content Include="Image\cerise-du-cafeier.jpg" />
+    <Content Include="Image\Cerises-de-café-300x225.jpg" />
+    <Content Include="Image\Robusta.jpg" />
+    <Content Include="Image\robusta1.jpg" />
+    <Content Include="Image\tasse Cafe.png" />
+    <Content Include="Image\tasse-de-cafe.jpg" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -324,9 +338,14 @@
     <Content Include="Views\fournisseur\ListFournisseurs.cshtml" />
     <Content Include="Views\fournisseur\Add.cshtml" />
     <Content Include="Views\fournisseur\Edit.cshtml" />
+    <Content Include="Views\TypeSortie\ListTypeSorties.cshtml" />
+    <Content Include="Views\TypeSortie\Add.cshtml" />
+    <Content Include="Views\TypeSortie\Edit.cshtml" />
+    <Content Include="Views\fournisseur\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -337,20 +356,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608061829552_first_migration.resx">
-      <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608090652595_migre.resx">
+      <DependentUpon>201608090652595_migre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608071055286_poidsMigre.resx">
-      <DependentUpon>201608071055286_poidsMigre.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608090656144_migre1.resx">
+      <DependentUpon>201608090656144_migre1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608071126517_Migre.resx">
-      <DependentUpon>201608071126517_Migre.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608091318564_migre2.resx">
+      <DependentUpon>201608091318564_migre2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608072305429_MigreImg.resx">
-      <DependentUpon>201608072305429_MigreImg.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608091401216_migre3.resx">
+      <DependentUpon>201608091401216_migre3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608080609594_MigreUser.resx">
-      <DependentUpon>201608080609594_MigreUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608091402354_migre4.resx">
+      <DependentUpon>201608091402354_migre4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

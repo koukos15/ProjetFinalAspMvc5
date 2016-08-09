@@ -16,7 +16,7 @@ namespace CaffeGest
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Client", action = "ListClients", id = UrlParameter.Optional }
+                defaults: new { controller = "Produit", action = "ListProduits", id = UrlParameter.Optional }
             );
         }
     }

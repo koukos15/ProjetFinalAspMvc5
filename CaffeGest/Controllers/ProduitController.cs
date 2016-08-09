@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using CaffeGest.Services;
+using CaffeGest.Models.DAL;
 
 namespace CaffeGest.Controllers
 {
@@ -29,14 +30,22 @@ namespace CaffeGest.Controllers
             });
 
             this.ViewBag.Cats = ListCategories;
+
+            List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
+            this.ViewBag.Fournisseurs = LesFournisseurs;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Add(Produit produit)
+        public ActionResult Add(Produit produit,HttpPostedFileBase upload)
         {
             if (this.ModelState.IsValid)
             {
+
+                List<int> ids = this.Request.Form.GetValues("frs").Select(h => int.Parse(h)).ToList();
+                produit.FournisseursId = ids;
+
                 ProduitsServices.AddProduit(produit);
                 return this.RedirectToAction("ListProduits");
             }
@@ -47,6 +56,10 @@ namespace CaffeGest.Controllers
             });
 
             this.ViewBag.Cats = ListCategories;
+
+            List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
+            this.ViewBag.Fournisseurs = LesFournisseurs;
+
             return View(produit);
         }
 
@@ -71,6 +84,10 @@ namespace CaffeGest.Controllers
                     });
 
                     this.ViewBag.Cats = ListCategories;
+
+                    List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
+                    this.ViewBag.Fournisseurs = LesFournisseurs;
+
                     return View(p);
                 }
             }
@@ -92,7 +109,12 @@ namespace CaffeGest.Controllers
                 Value = Lc.Id.ToString()
             });
             this.ViewBag.Cats = ListCategories;
+
+            List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
+            this.ViewBag.Fournisseurs = LesFournisseurs;
             return View(produit);
         }
+
+        
     }
 }
