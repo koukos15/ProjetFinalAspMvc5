@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CaffeGest.Models
+@model Fournisseur
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="mettre un grand coe = gestion des produits">Les Fournisseurs</h2>
+        <div>
+            @Html.ActionLink("Ajouter", "Add")
+
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>Nom</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Adresse</th>
+                    <th>Produits</th>
+                    <th>Options</th>
+                </tr>
+
+                <tr>
+                    <td>@Model.Id</td>
+                    <td>@Model.Nom</td>
+                    <td>@Model.Tel</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.Adresse</td>
+                    <td>
+                        @foreach (Produit p in @Model.Produits)
+                        {
+                            @p.Nom
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editer", "Edit", routeValues: new { id = @Model.Id })
+                        @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = @Model.Id }, htmlAttributes: new { @class = "btnDelete" })
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btnDelete").click(function () {
+                return confirm("delete it?");
+            });
+        });
+
+    </script>
+}

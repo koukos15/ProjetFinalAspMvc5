@@ -1,50 +1,63 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     IEnumerable<SelectListItem> LesProduits = this.ViewBag.Cats;
+    List<Fournisseur> LesFournisseurs = this.ViewBag.Fournisseurs;
 }
 @using CaffeGest.Models
 @model Produit
 
-<h2>Editer</h2>
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="mettre un grand coe = gestion des produits">Editer</h2>
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Nom, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Nom, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nom, new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Nom, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.PU, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.PU, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.PU, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PU, new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(m => m.PU, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.PU, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Grammage, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.Grammage, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Grammage, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Poids, new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(m => m.Poids, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Poids, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.QuantiteStock, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(m => m.QuantiteStock, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.QuantiteStock, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Categorie, new { @class = "control-label col-md-2" })
-            @Html.DropDownListFor(m => m.CategorieId, LesProduits, new { @class = "form-control" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.QuantiteStock, new { @class = "control-label col-md-2" })
+                    @Html.TextBoxFor(m => m.QuantiteStock, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.QuantiteStock, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Categorie, new { @class = "control-label col-md-2" })
+                    @Html.DropDownListFor(m => m.CategorieId, LesProduits, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Fournisseurs, new { @class = "control-label col-md-2" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="submit" />
+                    <select name="frs" multiple class="control-label col-md-2">
+                        @foreach (Fournisseur fs in LesFournisseurs)
+                {
+                            <option value=@fs.Id>@fs.Nom</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="submit" />
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
-
+</div>
 

@@ -2,3 +2,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using CaffeGest.Models
+@model Fournisseur
+
+<h2>Add</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nom, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nom, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Tel, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.Tel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Tel, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Adresse, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.Adresse, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Adresse, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="submit" />
+            </div>
+        </div>
+    </div>
+}
+
+
+

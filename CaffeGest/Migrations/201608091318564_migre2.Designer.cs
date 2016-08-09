@@ -7,13 +7,13 @@ namespace CaffeGest.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class first_migration : IMigrationMetadata
+    public sealed partial class migre2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(first_migration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(migre2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608061829552_first_migration"; }
+            get { return "201608091318564_migre2"; }
         }
         
         string IMigrationMetadata.Source

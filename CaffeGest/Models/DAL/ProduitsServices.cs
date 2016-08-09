@@ -1,6 +1,8 @@
 ﻿using CaffeGest.Models;
+using CaffeGest.Models.DAL;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -13,7 +15,7 @@ namespace CaffeGest.Services
             List<Produit> LesProduits = null;
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                LesProduits = ctx.Produits.Include("Categorie").ToList();
+                LesProduits = ctx.Produits.Include("Categorie").Include("Fournisseurs").ToList();
             }
             return LesProduits;
         }
@@ -22,6 +24,8 @@ namespace CaffeGest.Services
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
+                produit.Fournisseurs = FournisseurServices.GetFournisseurs(produit.FournisseursId, ctx);
+               
                 ctx.Produits.Add(produit);
                 ctx.SaveChanges();
             }
@@ -58,7 +62,9 @@ namespace CaffeGest.Services
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                Produit p = GetById(prod.Id,ctx);
+                Produit p = GetById(prod.Id, ctx);
+                p.Fournisseurs = FournisseurServices.GetFournisseurs(prod.FournisseursId, ctx);
+                
                 if (p != null)
                 {
                     p.Nom = prod.Nom;
@@ -66,6 +72,17 @@ namespace CaffeGest.Services
                     p.QuantiteStock = prod.QuantiteStock;
                     p.Poids = prod.Poids;
                     p.CategorieId = prod.CategorieId;
+                    List<int> oldIds = p.FournisseursId;
+                    List<int> newIds = null;
+                    if(prod.FournisseursId != null)
+                    {
+                        newIds = prod.FournisseursId;
+                    }
+                    else
+                    {
+                        newIds = new List<int>();
+                    }
+                    prod.Fournisseurs = FournisseurServices.GetFournisseurs(prod.FournisseursId, ctx);
                     ctx.SaveChanges();
                 }
                 ctx.SaveChanges();

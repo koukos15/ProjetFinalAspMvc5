@@ -4,28 +4,32 @@
 @using CaffeGest.Models
 @model List<Categorie>
 
-<h2>Les Categories de produit</h2>
-<div>
-    @Html.ActionLink("Ajouter", "Add")
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="mettre un grand coe = gestion des produits">Les Categories de produit</h2>
+        <div>
+            @Html.ActionLink("Ajouter", "Add")
 
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>Nom</th>
-            <th>Options</th>
-        </tr>
-        @foreach (Categorie c in Model)
-        {
-            <tr>
-                <td>@c.Id</td>
-                <td>@c.Nom</td>
-                <td>
-                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id })
-                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete" })
-                </td>
-            </tr>
-        }
-    </table>
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Options</th>
+                </tr>
+                @foreach (Categorie c in Model)
+                {
+                    <tr>
+                        <td>@c.Id</td>
+                        <td>@c.Nom</td>
+                        <td>
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id })
+                            @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete" })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
 @section scripts{
     <script>

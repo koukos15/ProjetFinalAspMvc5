@@ -3,16 +3,16 @@ namespace CaffeGest.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class MigreImg : DbMigration
+    public partial class migre1 : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Produits", "Image", c => c.String());
+            AddColumn("dbo.Produits", "photo", c => c.Binary());
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Produits", "Image");
+            DropColumn("dbo.Produits", "photo");
         }
     }
 }
