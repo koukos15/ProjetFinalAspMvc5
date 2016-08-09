@@ -34,12 +34,12 @@ namespace CaffeGest.Models
         public virtual DbSet<Categorie> Categories { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Depense> Depenses { get; set; }
-        public virtual DbSet<Entree> Entrees { get; set; }
+        public virtual DbSet<Achat> Achats { get; set; }
         public virtual DbSet<Produit> Produits { get; set; }
         public virtual DbSet<Sortie> Sorties { get; set; }
         public virtual DbSet<TypeClient> TypeClients { get; set; }
         public virtual DbSet<TypeSortie> TypeSorties { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<User> MesUsers { get; set; }
         public virtual DbSet<Fournisseur> Fournissseurs { get; set; }
 
     }
