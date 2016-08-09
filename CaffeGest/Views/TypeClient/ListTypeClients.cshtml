@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using CaffeGest.Models
+@model List<TypeClient>
+
+<h2>Les Categories de produit</h2>
+<div>
+    @Html.ActionLink("Ajouter", "Add")
+
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Options</th>
+        </tr>
+        @foreach (TypeClient tp in Model)
+        {
+            <tr>
+                <td>@tp.Id</td>
+                <td>@tp.Nom</td>
+                <td>
+                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = tp.Id })
+                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = tp.Id }, htmlAttributes: new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

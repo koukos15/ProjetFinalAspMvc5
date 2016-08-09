@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Produit> prods = this.ViewBag.Produits;
+}
+@using CaffeGest.Models
+@model List<Produit>
+
+
+<h2>Les Produits</h2>
+<div>
+    @Html.ActionLink("Ajouter", "Add")
+    
+    <table class="table">
+        <tr>
+            <th>id</th>
+            <th>Nom</th>
+            <th>Prix unitaire</th>
+            <th>Grammage</th>
+            <th>Quantite de stock</th>
+            <th>Categorie</th>
+            <th>Ops</th>
+        </tr>
+        @foreach (Produit p in prods)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Nom</td>
+                <td>@p.PU</td>
+                <td>@p.Grammage</td>
+                <td>@p.QuantiteStock</td>
+                <td>@p.Categorie.Nom</td>
+                <td>
+                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = p.Id })
+                    @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = p.Id }, htmlAttributes: new { @class = "btnDelete" })
+                </td>
+            </tr>
+        }
+    </table>  
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btnDelete").click(function () {
+                return confirm("delete it?");
+            });
+        });
+
+    </script>
+}

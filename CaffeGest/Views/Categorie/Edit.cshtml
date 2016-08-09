@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using CaffeGest.Models
+@model Categorie
+
+<h2>Editer</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Nom, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(m => m.Nom, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Nom, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2">
+                <input type="submit" value="submit" />
+            </div>
+        </div>
+    </div>
+}

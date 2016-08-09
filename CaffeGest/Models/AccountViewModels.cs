@@ -79,6 +79,11 @@ namespace CaffeGest.Models
         [Display(Name = "Confirmer le mot de passe ")]
         [Compare("Password", ErrorMessage = "Le mot de passe et le mot de passe de confirmation ne correspondent pas.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 3,
+        ErrorMessage = "entre un nom entre 3 et 50 characteres")]
+        public string Nom { get; set; }
     }
 
     public class ResetPasswordViewModel
