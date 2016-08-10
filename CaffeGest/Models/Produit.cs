@@ -27,10 +27,10 @@ namespace CaffeGest.Models
 
         //propriete de navigation
         public virtual Categorie Categorie { get; set; }
-        public virtual ICollection<Entree> Entrees { get; set; }
+        public virtual ICollection<Achat> Entrees { get; set; }
         public virtual ICollection<Sortie> Sorties { get; set; }
         public virtual ICollection<Fournisseur> Fournisseurs { get; set; }
-
+        public virtual ICollection<Photo> Photos { get; set; } 
         //public HttpPostedFileBase ProduitPicture { get; set; }
 
     }

@@ -208,28 +208,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608090652595_migre.cs" />
-    <Compile Include="Migrations\201608090652595_migre.Designer.cs">
-      <DependentUpon>201608090652595_migre.cs</DependentUpon>
+    <Compile Include="Migrations\201608101407530_Migre.cs" />
+    <Compile Include="Migrations\201608101407530_Migre.Designer.cs">
+      <DependentUpon>201608101407530_Migre.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608090656144_migre1.cs" />
-    <Compile Include="Migrations\201608090656144_migre1.Designer.cs">
-      <DependentUpon>201608090656144_migre1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608091318564_migre2.cs" />
-    <Compile Include="Migrations\201608091318564_migre2.Designer.cs">
-      <DependentUpon>201608091318564_migre2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608091401216_migre3.cs" />
-    <Compile Include="Migrations\201608091401216_migre3.Designer.cs">
-      <DependentUpon>201608091401216_migre3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608091402354_migre4.cs" />
-    <Compile Include="Migrations\201608091402354_migre4.Designer.cs">
-      <DependentUpon>201608091402354_migre4.cs</DependentUpon>
+    <Compile Include="Migrations\201608101411531_Migre1.cs" />
+    <Compile Include="Migrations\201608101411531_Migre1.Designer.cs">
+      <DependentUpon>201608101411531_Migre1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Achat.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\DAL\ClientServices.cs" />
@@ -239,7 +228,6 @@
     <Compile Include="Models\DAL\TypeSortieServices.cs" />
     <Compile Include="Models\DAL\UserServices.cs" />
     <Compile Include="Models\Depense.cs" />
-    <Compile Include="Models\Entree.cs" />
     <Compile Include="Models\Fournisseur.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -342,6 +330,7 @@
     <Content Include="Views\TypeSortie\Add.cshtml" />
     <Content Include="Views\TypeSortie\Edit.cshtml" />
     <Content Include="Views\fournisseur\Details.cshtml" />
+    <Content Include="Views\Produit\ProduitPhotos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -356,20 +345,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608090652595_migre.resx">
-      <DependentUpon>201608090652595_migre.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608101407530_Migre.resx">
+      <DependentUpon>201608101407530_Migre.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608090656144_migre1.resx">
-      <DependentUpon>201608090656144_migre1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608091318564_migre2.resx">
-      <DependentUpon>201608091318564_migre2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608091401216_migre3.resx">
-      <DependentUpon>201608091401216_migre3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608091402354_migre4.resx">
-      <DependentUpon>201608091402354_migre4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608101411531_Migre1.resx">
+      <DependentUpon>201608101411531_Migre1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

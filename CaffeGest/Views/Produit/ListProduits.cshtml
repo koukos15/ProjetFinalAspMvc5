@@ -16,6 +16,7 @@
                 <tr>
                     <th>id</th>
                     <th>Nom</th>
+                    <th>Image</th>
                     <th>Prix unitaire</th>
                     <th>Poids</th>
                     <th>Quantite de stock</th>
@@ -28,9 +29,49 @@
                     <tr>
                         <td>@p.Id</td>
                         <td>@p.Nom</td>
+
+                        @if (p.Photos == null || p.Photos.Count <= 0)
+                        {
+                            <td>
+                                No Photo
+                                <br />
+                                @Html.ActionLink("Ajouter", "ProduitPhotos", new { Id = p.Id }, new
+                           {
+                               @class = "btn btn-danger btn-sm",
+                           })
+                                @Html.ActionLink("Supprimer", "DeletePhoto", new { Id = p.Id },
+                         new
+                         {
+                             @class = "btn btn-danger btn-sm",
+                             onclick = "return confirm('Êtes-vous sûr de vouloir supprimer cette photo?');"
+                         })
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                @foreach (Photo m in p.Photos)
+                                {
+                                    
+                                    <img src="~/Image/@m.ImgPath" alt="">
+                                    <br />
+                                    @Html.ActionLink("Ajouter", "ProduitPhotos", new { Id = m.Id }, new
+                               {
+                                   @class = "btn btn-danger btn-sm",
+                               })
+                                    @Html.ActionLink("Supprimer", "DeletePhoto", new { Id = m.Id },
+                         new
+                         {
+                             @class = "btn btn-danger btn-sm",
+                             onclick = "return confirm('Êtes-vous sûr de vouloir supprimer cette photo?');"
+                         })
+                                }
+                            </td>
+                        }
                         <td>@p.PU</td>
                         <td>@p.Poids</td>
                         <td>@p.QuantiteStock</td>
+
                         <td>@p.Categorie.Nom</td>
                         <td>
                             @foreach (Fournisseur f in p.Fournisseurs)

@@ -171,7 +171,7 @@ namespace CaffeGest.Controllers
                         ApplicationUserId = user.Id
 
                     };
-                    UserServices.Add(utilisateur);
+                  //  UserServices.Add(utilisateur);
 
                     return RedirectToAction("ListProduits", "Produit");
                 }

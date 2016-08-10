@@ -37,6 +37,8 @@
                     @Html.ValidationMessageFor(m => m.QuantiteStock, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
                 </div>
 
+               
+
                 <div class="form-group">
                     @Html.LabelFor(m => m.Categorie, new { @class = "control-label col-md-2" })
                     @Html.DropDownListFor(m => m.CategorieId, LesCategories, new { @class = "form-control" })

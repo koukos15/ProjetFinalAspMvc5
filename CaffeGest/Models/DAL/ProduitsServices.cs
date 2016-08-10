@@ -15,7 +15,7 @@ namespace CaffeGest.Services
             List<Produit> LesProduits = null;
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                LesProduits = ctx.Produits.Include("Categorie").Include("Fournisseurs").ToList();
+                LesProduits = ctx.Produits.Include("Categorie").Include("Fournisseurs").Include("Photos").ToList();
             }
             return LesProduits;
         }
@@ -24,8 +24,6 @@ namespace CaffeGest.Services
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
-                produit.Fournisseurs = FournisseurServices.GetFournisseurs(produit.FournisseursId, ctx);
-               
                 ctx.Produits.Add(produit);
                 ctx.SaveChanges();
             }
