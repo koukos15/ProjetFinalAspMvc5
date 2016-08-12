@@ -93,7 +93,7 @@ namespace CaffeGest.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(sortie);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin")]

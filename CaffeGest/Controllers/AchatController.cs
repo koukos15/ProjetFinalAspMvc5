@@ -65,8 +65,7 @@ namespace CaffeGest.Controllers
                 if (unAchat != null)
                 {
                     ViewBag.Fournisseurs = FournisseurManager.GetListItem(unAchat.Id);
-                    //ViewData.("Produits") = ProduitManager.GetListItem(unAchat.Id);
-                    ViewData["Produits"] = ProduitManager.GetListItem(unAchat.Id);
+                    ViewBag.Prod = ProduitManager.GetListItem(unAchat.Id);
 
                     return View(unAchat);
                 }
@@ -79,7 +78,7 @@ namespace CaffeGest.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(Achat unAchat)
         {
-            unAchat.Produit.Id = 1;
+            
             if (this.ModelState.IsValid)
             {
                
@@ -88,7 +87,7 @@ namespace CaffeGest.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(unAchat);
+            return RedirectToAction("Index");
         }
 
         [Authorize(Roles = "Admin")]

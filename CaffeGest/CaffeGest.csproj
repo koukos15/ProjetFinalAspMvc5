@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201608121216232_suite.Designer.cs">
       <DependentUpon>201608121216232_suite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608121359169_joel.cs" />
+    <Compile Include="Migrations\201608121359169_joel.Designer.cs">
+      <DependentUpon>201608121359169_joel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categorie.cs" />
@@ -225,6 +229,7 @@
     <Compile Include="Models\DAL\DepenseManager.cs" />
     <Compile Include="Models\DAL\FournisseurManager.cs" />
     <Compile Include="Models\DAL\FournisseurServices.cs" />
+    <Compile Include="Models\DAL\PhotoServices.cs" />
     <Compile Include="Models\DAL\ProduitManager.cs" />
     <Compile Include="Models\DAL\ProduitsServices.cs" />
     <Compile Include="Models\DAL\SortieManager.cs" />
@@ -237,6 +242,7 @@
     <Compile Include="Models\Fournisseur.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\Produit.cs" />
     <Compile Include="Models\Sortie.cs" />
     <Compile Include="Models\TypeClient.cs" />
@@ -333,6 +339,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608121216232_suite.resx">
       <DependentUpon>201608121216232_suite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608121359169_joel.resx">
+      <DependentUpon>201608121359169_joel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,6 +12,7 @@ namespace CaffeGest.Controllers
     [Authorize]
     public class ProduitController : Controller
     {
+
         // GET: Produit
         public ActionResult ListProduits()
         {
@@ -116,9 +117,9 @@ namespace CaffeGest.Controllers
             });
             this.ViewBag.Cats = ListCategories;
 
-            List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
-            this.ViewBag.Fournisseurs = LesFournisseurs;
-            return View(produit);
+            //List<Fournisseur> LesFournisseurs = FournisseurServices.GetAllFournisseurs().ToList();
+            //this.ViewBag.Fournisseurs = LesFournisseurs;
+            return RedirectToAction("ListProduits");
         }
 
         public ActionResult ProduitPhotos(Produit produit)

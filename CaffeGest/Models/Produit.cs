@@ -30,6 +30,7 @@ namespace CaffeGest.Models
         public virtual ICollection<Achat> Achats { get; set; }
         public virtual ICollection<Sortie> Sorties { get; set; }
         public virtual ICollection<Fournisseur> Fournisseurs { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
 
         //public HttpPostedFileBase ProduitPicture { get; set; }
 
