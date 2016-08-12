@@ -9,10 +9,10 @@
         $(document).ready(function () {
 
             $.ajax({
-                url: '@Url.Action("partialView", new {id = 2 } )',
+                url: "/Sortie/partialView/"+idProd,
                 type: 'GET',
                 dataType: 'html',
-                success: function(result){
+                success: function (result) {
                     $('#partiel').html(result)
                 }
             });
@@ -30,65 +30,70 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion des Sorties</h2>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
-
-        <div class="form-group">
-            @Html.LabelFor(a => a.ProduitId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Produit")
-            @Html.DropDownListFor(a => a.ProduitId, selectList: ViewBag.Produits as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            <div class="form-group">
+                @Html.LabelFor(a => a.ProduitId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Produit")
+                @Html.DropDownListFor(a => a.ProduitId, selectList: ViewBag.Produits as IEnumerable<SelectListItem>, optionLabel: "-select-",
             htmlAttributes: new { @class = "form-control", @id = "nomProd", @onchange = "genererPrix();" })
-            @Html.ValidationMessageFor(a => a.ProduitId)
-        </div>
+                @Html.ValidationMessageFor(a => a.ProduitId)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.ClientId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Client")
-            @Html.DropDownListFor(a => a.ClientId, selectList: ViewBag.Clients as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            <div class="form-group">
+                @Html.LabelFor(a => a.ClientId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Client")
+                @Html.DropDownListFor(a => a.ClientId, selectList: ViewBag.Clients as IEnumerable<SelectListItem>, optionLabel: "-select-",
             htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.ClientId)
-        </div>
+                @Html.ValidationMessageFor(a => a.ClientId)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.DateSortie, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Sortie")
-            @Html.TextBoxFor(a => a.DateSortie, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
-            @Html.ValidationMessageFor(a => a.DateSortie)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.DateSortie, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Sortie")
+                @Html.TextBoxFor(a => a.DateSortie, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
+                @Html.ValidationMessageFor(a => a.DateSortie)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.TypeSortieId, htmlAttributes:  new { @class = "control-label col-md-2" }, labelText: "Type Sortie")
-            @Html.DropDownListFor(a => a.TypeSortieId, selectList: ViewBag.TypeSorties as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            <div class="form-group">
+                @Html.LabelFor(a => a.TypeSortieId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Type Sortie")
+                @Html.DropDownListFor(a => a.TypeSortieId, selectList: ViewBag.TypeSorties as IEnumerable<SelectListItem>, optionLabel: "-select-",
             htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.TypeSortieId)
-        </div>
+                @Html.ValidationMessageFor(a => a.TypeSortieId)
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.QteSortie, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Quantite")
-            @Html.TextBoxFor(a => a.QteSortie, new { @class = "form-control", @id = "qte", @onchange = "genererMontant();" })
-            @Html.ValidationMessageFor(a => a.QteSortie)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.QteSortie, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Quantite")
+                @Html.TextBoxFor(a => a.QteSortie, new { @class = "form-control", @id = "qte", @onchange = "genererMontant();" })
+                @Html.ValidationMessageFor(a => a.QteSortie)
+            </div>
 
-        <div class="form-group">
-            <div id="partiel"></div>
-        </div>
+            <div class="form-group">
+                <div id="partiel"></div>
+            </div>
 
-        <div class="form-group">
-            @*faire simple input avec un chacun calcule et disabled*@
-            @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control", @ReadOnly = true, @id = "mnt" })
-            @Html.ValidationMessageFor(a => a.Montant)
-        </div>
-
+            <div class="form-group">
+                @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control", @ReadOnly = true, @id = "mnt" })
+                @Html.ValidationMessageFor(a => a.Montant)
+            </div>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Ajouter" />
+
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Ajouter" />
+                </div>
             </div>
         </div>
-    </div>
 
-}
+    }
+</div>
 
 @Html.ActionLink("Retour", "Index")
 

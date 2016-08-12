@@ -207,32 +207,13 @@
     <Compile Include="Controllers\ProduitController.cs" />
     <Compile Include="Controllers\SortieController.cs" />
     <Compile Include="Controllers\TypeClientController.cs" />
+    <Compile Include="Controllers\TypeSortieController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201608061829552_first_migration.cs" />
-    <Compile Include="Migrations\201608061829552_first_migration.Designer.cs">
-      <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608071425258_seconde migration.cs" />
-    <Compile Include="Migrations\201608071425258_seconde migration.Designer.cs">
-      <DependentUpon>201608071425258_seconde migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608080400124_3eme migration.cs" />
-    <Compile Include="Migrations\201608080400124_3eme migration.Designer.cs">
-      <DependentUpon>201608080400124_3eme migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608080548101_4eme migration.cs" />
-    <Compile Include="Migrations\201608080548101_4eme migration.Designer.cs">
-      <DependentUpon>201608080548101_4eme migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608080604487_5eme migration.cs" />
-    <Compile Include="Migrations\201608080604487_5eme migration.Designer.cs">
-      <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201608090118300_6e migration.cs" />
-    <Compile Include="Migrations\201608090118300_6e migration.Designer.cs">
-      <DependentUpon>201608090118300_6e migration.cs</DependentUpon>
+    <Compile Include="Migrations\201608121216232_suite.cs" />
+    <Compile Include="Migrations\201608121216232_suite.Designer.cs">
+      <DependentUpon>201608121216232_suite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -249,6 +230,7 @@
     <Compile Include="Models\DAL\SortieManager.cs" />
     <Compile Include="Models\DAL\TypeClientService.cs" />
     <Compile Include="Models\DAL\TypeSortieManager.cs" />
+    <Compile Include="Models\DAL\TypeSortieServices.cs" />
     <Compile Include="Models\DAL\UserServices.cs" />
     <Compile Include="Models\Depense.cs" />
     <Compile Include="Models\Achat.cs" />
@@ -349,23 +331,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608061829552_first_migration.resx">
-      <DependentUpon>201608061829552_first_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608071425258_seconde migration.resx">
-      <DependentUpon>201608071425258_seconde migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608080400124_3eme migration.resx">
-      <DependentUpon>201608080400124_3eme migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608080548101_4eme migration.resx">
-      <DependentUpon>201608080548101_4eme migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608080604487_5eme migration.resx">
-      <DependentUpon>201608080604487_5eme migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201608090118300_6e migration.resx">
-      <DependentUpon>201608090118300_6e migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608121216232_suite.resx">
+      <DependentUpon>201608121216232_suite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

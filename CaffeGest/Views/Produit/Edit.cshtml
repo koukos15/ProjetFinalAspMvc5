@@ -1,15 +1,20 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using CaffeGest.Models
+@model Produit
+@{
     IEnumerable<SelectListItem> LesProduits = this.ViewBag.Cats;
     List<Fournisseur> LesFournisseurs = this.ViewBag.Fournisseurs;
+    ViewBag.Title = "Editer un produit";
 }
-@using CaffeGest.Models
-@model Produit
 
+<br />
+<h2>@ViewBag.Title</h2>
+<br />
 
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Editer</h2>
+        <h2 class="panel-title">Gestion des produits</h2>
+    </div>
+    <br />
         @using (Html.BeginForm())
         {
             <div class="form-horizontal">
@@ -58,6 +63,7 @@
                 </div>
             </div>
         }
-    </div>
 </div>
+
+@Html.ActionLink("Retour", "ListProduits")
 

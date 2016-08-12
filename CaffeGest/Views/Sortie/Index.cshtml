@@ -4,81 +4,85 @@
     ViewBag.Title = "Liste des ventes et sorties";
 }
 
-<br />
 @TempData["msg"]
 <br />
 <h2>@ViewBag.Title</h2>
 <br />
+@Html.ActionLink("Ajouter", actionName: "Add", controllerName: "Sortie", routeValues: "", htmlAttributes: new { @class = "btn btn-info" })
 <br />
-@Html.ActionLink("Ajouter", "Add")
 <br />
-<br />
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion des Sorties</h2>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
 
-        <div class="form-group">
-            @Html.Label("Date de Debut de la periode", new { @class = "control-label col-md-2" })
-            @Html.TextBox("dateDebut", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
-        </div>
+            <div class="form-group">
+                @Html.Label("Date de Debut de la periode", new { @class = "control-label col-md-2" })
+                @Html.TextBox("dateDebut", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+            </div>
 
-        <div class="form-group">
-            @Html.Label("Date de Fin de la periode", new { @class = "control-label col-md-2" })
-            @Html.TextBox("dateFin", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
-        </div>
+            <div class="form-group">
+                @Html.Label("Date de Fin de la periode", new { @class = "control-label col-md-2" })
+                @Html.TextBox("dateFin", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+            </div>
 
-        <div class="form-group">
-            @Html.Label("Type Sortie", new { @class = "control-label col-md-2" })
-            @Html.DropDownList("typeSortie", selectList: ViewBag.TypeSorties as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            <div class="form-group">
+                @Html.Label("typeSortie", new { @class = "control-label col-md-2" })
+                @Html.DropDownList("typeSortie", selectList: ViewBag.TypeSorties as IEnumerable<SelectListItem>, optionLabel: "-select-",
             htmlAttributes: new { @class = "form-control" })
-        </div>
+            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Valider" />
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Valider" />
+                </div>
             </div>
         </div>
-    </div>
-}
-<br />
-<br />
-@if (Model != null)
-{
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>Nom Produit</th>
-            <th>Nom Client</th>
-            <th>Date</th>
-            <th>Quantite</th>
-            <th>Prix Unitaire</th>
-            <th>Montant</th>
-            <th>Action</th>
-        </tr>
-        @foreach (Sortie a in Model)
-        {
+    }
+    <br />
+    <br />
+    @if (Model != null)
+    {
+        <table class="table">
             <tr>
-                <td>@a.Id</td>
-                <td>@a.Produit.Nom</td>
-                <td>@a.Client.Nom</td>
-                <td format="{0:yyyy-MM-dd}" Type="date">@a.DateSortie</td>
-                <td>@a.QteSortie</td>
-                <td>@a.Produit.PU</td>
-                <td>@a.Montant</td>
-                @if (User.IsInRole("Admin"))
-                {
-                    <td>
-                        @Html.ActionLink("Editer", "Edit", routeValues: new { id = a.Id })
-                        @Html.ActionLink("Delete", "Delete", routeValues: new { id = a.Id },
-                         htmlAttributes: new { @class = "btnDelete" })
-                    </td>
-                }
+                <th>Id</th>
+                <th>Nom Produit</th>
+                <th>Nom Client</th>
+                <th>Date</th>
+                <th>Quantite</th>
+                <th>Prix Unitaire</th>
+                <th>Montant</th>
+                <th>TypeSortie</th>
+                <th>Action</th>
             </tr>
-        }
+            @foreach (Sortie a in Model)
+            {
+                <tr>
+                    <td>@a.Id</td>
+                    <td>@a.Produit.Nom</td>
+                    <td>@a.Client.Nom</td>
+                    <td format="{0:yyyy-MM-dd}" Type="date">@a.DateSortie</td>
+                    <td>@a.QteSortie</td>
+                    <td>@a.Produit.PU</td>
+                    <td>@a.Montant</td>
+                    <td>@a.TypeSortie.Nom</td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = a.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "Delete", routeValues: new { id = a.Id }, htmlAttributes: new { @class = "btnDelete btn btn-danger" })
+                        </td>
+                    }
+                </tr>
+            }
 
-    </table>
-}
-
+        </table>
+    }
+</div>
 @section scripts{
     <script>
         $(document).ready(function () {

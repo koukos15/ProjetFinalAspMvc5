@@ -430,25 +430,6 @@ namespace CaffeGest.Controllers
 
             base.Dispose(disposing);
         }
-        public ActionResult AjouterAdminUser()
-        {
-            if (this.Request.IsLocal)
-            {
-
-                if (UserManager.FindByName("admin@isi.com") == null)
-                {
-                    var user = new ApplicationUser { UserName = "admin@isi.com", Email = "admin@isi.com" };
-                    var result = UserManager.Create(user, "Abc123...");
-                    if (result.Succeeded)
-                    {
-                        //ajouter un user dans un role
-                        UserManager.AddToRole(user.Id, "Admin");
-                        return Content("admin user added");
-                    }
-                }
-            }
-            return Content("admin user not added");
-        }
 
         [AllowAnonymous]
         public ActionResult AjouterUsers()

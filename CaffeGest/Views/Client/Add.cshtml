@@ -1,11 +1,19 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    IEnumerable<SelectListItem> lesTypesClients = this.ViewBag.TypesClients;
-}
-@using CaffeGest.Models
+﻿@using CaffeGest.Models
 @model Client
 
-<h2>Add</h2>
+@{
+    IEnumerable<SelectListItem> lesTypesClients = this.ViewBag.TypesClients;
+    ViewBag.Title = "Ajouter un client";
+}
+<br />
+<h2>@ViewBag.Title</h2>
+<br />
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion de clients</h2>
+    </div>
+    <br />
 
 @using (Html.BeginForm())
 {
@@ -44,7 +52,11 @@
                 <input type="submit" value="submit" />
             </div>
         </div>
-    </div>
+   </div>
 }
+</div>
+
+@Html.ActionLink("Retour", "ListClients")
+
 
 

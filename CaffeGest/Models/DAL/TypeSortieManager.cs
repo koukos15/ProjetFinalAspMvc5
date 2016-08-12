@@ -24,7 +24,7 @@ namespace CaffeGest.Models.DAL
                 t => new SelectListItem
                 {
                     Value = t.Id.ToString(),
-                    Text = t.Id.ToString(),
+                    Text = t.Nom,
                     Selected = (id == t.Id)
                 }
             );

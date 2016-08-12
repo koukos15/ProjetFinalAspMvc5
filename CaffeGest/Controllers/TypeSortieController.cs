@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace CaffeGest.Controllers
 {
+    [Authorize]
     public class TypeSortieController : Controller
     {
 
@@ -36,12 +37,14 @@ namespace CaffeGest.Controllers
             return View(ts);
         }
 
+        [Authorize(Roles ="Admin")]
         public ActionResult Delete(int id)
         {
             TypeSortieServices.Delete(id);
             return this.RedirectToAction("ListTypeSorties");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id != null)
@@ -56,6 +59,7 @@ namespace CaffeGest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(TypeSortie ts)
         {
             if (this.ModelState.IsValid)

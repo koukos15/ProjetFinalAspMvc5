@@ -17,8 +17,6 @@ namespace CaffeGest.Migrations
 
         protected override void Seed(CaffeGest.Models.ApplicationDbContext context)
         {
-            //  AddSomeProduits(context);
-            // AddSomeCategories(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -31,6 +29,10 @@ namespace CaffeGest.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            //  AddSomeProduits(context);
+            // AddSomeCategories(context);
+
             AddRoles();
         }
 
@@ -72,6 +74,5 @@ namespace CaffeGest.Migrations
             };
             context.Categories.AddRange(LesCategories);
         }
-
     }
 }

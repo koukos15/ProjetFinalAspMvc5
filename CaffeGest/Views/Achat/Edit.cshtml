@@ -4,61 +4,78 @@
 @{
     ViewBag.Title = "Modifier Achat";
 }
-
+<br />
 <h2>@ViewBag.Title</h2>
+<br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion des Achats</h2>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(a => a.ProduitId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Produit")
+                @Html.DropDownListFor(a => a.ProduitId, selectList: ViewBag.Produits as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            htmlAttributes: new { @class = "form-control"})
+                @Html.ValidationMessageFor(a => a.ProduitId, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.ProduitId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Produit")
-            @Html.DropDownListFor(a => a.ProduitId, selectList: ViewBag.Produits as IEnumerable<SelectListItem>, optionLabel: "-select-",
+            <div class="form-group">
+                @Html.LabelFor(a => a.FournisseurId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Fournisseur")
+                @Html.DropDownListFor(a => a.FournisseurId, selectList: ViewBag.Fournisseurs as IEnumerable<SelectListItem>, optionLabel: "-select-",
             htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.ProduitId)
-        </div>
+                @Html.ValidationMessageFor(a => a.FournisseurId, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.FournisseurId, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Nom Fournisseur")
-            @Html.DropDownListFor(a => a.FournisseurId, selectList: ViewBag.Fournisseurs as IEnumerable<SelectListItem>, optionLabel: "-select-",
-            htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.FournisseurId)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.DateAchat, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Achat")
+                @Html.TextBoxFor(a => a.DateAchat, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
+                @Html.ValidationMessageFor(a => a.DateAchat, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.DateAchat, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Achat")
-            @Html.TextBoxFor(a => a.DateAchat, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
-            @Html.ValidationMessageFor(a => a.DateAchat)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.QteAchetee, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Quantite")
+                @Html.TextBoxFor(a => a.QteAchetee, new { @class = "form-control", @id = "qte", @onchange = "genererMontant();" })
+                @Html.ValidationMessageFor(a => a.QteAchetee, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.QteAchetee, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Quantite")
-            @Html.TextBoxFor(a => a.QteAchetee, new { @class = "form-control"})
-            @Html.ValidationMessageFor(a => a.QteAchetee)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Produit.PU, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Prix Unitaire")
+                @Html.TextBoxFor(a => a.Produit.PU, new { @class = "form-control", @id = "pu", @ReadOnly = true })
+                @Html.ValidationMessageFor(a => a.Produit.PU, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control"})
-            @Html.ValidationMessageFor(a => a.Montant)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control", @ReadOnly = true, @id = "mnt" })
+                @Html.ValidationMessageFor(a => a.Montant, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Enregistrer" />
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Enregistrer" />
+                </div>
             </div>
         </div>
-    </div>
 
-}
+    }
+</div>
 
 @Html.ActionLink("Retour", "Index")
 
 @*pour la validation cote client*@
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+        function genererMontant() {
+            $('#mnt').val($('#pu').val() * $('#qte').val());
+        }
+
+</script>
 
 }
 

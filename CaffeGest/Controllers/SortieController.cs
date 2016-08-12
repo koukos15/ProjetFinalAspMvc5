@@ -49,8 +49,6 @@ namespace CaffeGest.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                Produit unProduit = ProduitsServices.GetById(sortie.ProduitId);
-                unProduit.QuantiteStock -= sortie.QteSortie;
                 SortieManager.Add(sortie);
 
                 TempData["msg"] = "la sortie du produit a ete ajoute avec succces";
@@ -95,7 +93,7 @@ namespace CaffeGest.Controllers
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            return View(sortie);
         }
 
         [Authorize(Roles = "Admin")]

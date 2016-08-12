@@ -1,15 +1,21 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-@using CaffeGest.Models
+﻿@using CaffeGest.Models
 @model List<Categorie>
+@{
+
+    ViewBag.Title = "Liste des Categories";
+}
+<br />
+<h2>@ViewBag.Title</h2>
+
+<br />
+@Html.ActionLink("Ajouter", actionName: "Add", controllerName: "Categorie", routeValues: "", htmlAttributes: new { @class = "btn btn-info" })
+<br />
+<br />
 
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Les Categories de produit</h2>
-        <div>
-            @Html.ActionLink("Ajouter", "Add")
-
+        <h2 class="panel-title">Gestion des categories</h2>
+    </div>
             <table class="table">
                 <tr>
                     <th>Id</th>
@@ -21,16 +27,20 @@
                     <tr>
                         <td>@c.Id</td>
                         <td>@c.Nom</td>
-                        <td>
-                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id })
-                            @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete" })
+                @if (User.IsInRole("Admin"))
+                    {
+                        <td>                      
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                            @Html.ActionLink("Delete", "Delete", routeValues: new { id = c.Id }, htmlAttributes: new { @class = "btnDelete btn btn-danger" })
                         </td>
+                    }
+                        
                     </tr>
                 }
             </table>
+            <br />
         </div>
-    </div>
-</div>
+
 @section scripts{
     <script>
         $(document).ready(function () {

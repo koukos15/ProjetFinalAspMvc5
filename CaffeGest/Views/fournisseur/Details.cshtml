@@ -1,16 +1,18 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using CaffeGest.Models
+﻿@using CaffeGest.Models
 @model Fournisseur
 
+@{
+    ViewBag.Title = "Details Fournisseur";
+
+}
+
+<br />
+<h2>@ViewBag.Title</h2>
+<br />
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Les Fournisseurs</h2>
-        <div>
-            @Html.ActionLink("Ajouter", "Add")
-
+        <h2 class="panel-title">Gestion des fournisseurs</h2>
+    </div>
             <table class="table">
                 <tr>
                     <th>id</th>
@@ -19,7 +21,6 @@
                     <th>Email</th>
                     <th>Adresse</th>
                     <th>Produits</th>
-                    <th>Options</th>
                 </tr>
 
                 <tr>
@@ -33,24 +34,11 @@
                         {
                             @p.Nom
                         }
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editer", "Edit", routeValues: new { id = @Model.Id })
-                        @Html.ActionLink("Supprimer", "Delete", routeValues: new { id = @Model.Id }, htmlAttributes: new { @class = "btnDelete" })
-                    </td>
+                    </td>                 
                 </tr>
 
             </table>
-        </div>
-    </div>
 </div>
-@section scripts{
-    <script>
-        $(document).ready(function () {
-            $(".btnDelete").click(function () {
-                return confirm("delete it?");
-            });
-        });
 
-    </script>
-}
+@Html.ActionLink("Retour", "ListFournisseurs")
+ 

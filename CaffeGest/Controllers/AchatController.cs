@@ -44,8 +44,6 @@ namespace CaffeGest.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                Produit unProduit = ProduitsServices.GetById(unAchat.ProduitId);
-                unProduit.QuantiteStock += unAchat.QteAchetee;
                 AchatManager.Add(unAchat);
 
                 TempData["msg"] = "l'achat a ete ajoute avec succces";
@@ -67,7 +65,8 @@ namespace CaffeGest.Controllers
                 if (unAchat != null)
                 {
                     ViewBag.Fournisseurs = FournisseurManager.GetListItem(unAchat.Id);
-                    ViewBag.Produits = ProduitManager.GetListItem(unAchat.Id);
+                    //ViewData.("Produits") = ProduitManager.GetListItem(unAchat.Id);
+                    ViewData["Produits"] = ProduitManager.GetListItem(unAchat.Id);
 
                     return View(unAchat);
                 }
@@ -80,6 +79,7 @@ namespace CaffeGest.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(Achat unAchat)
         {
+            unAchat.Produit.Id = 1;
             if (this.ModelState.IsValid)
             {
                
@@ -88,7 +88,7 @@ namespace CaffeGest.Controllers
                 return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index");
+            return View(unAchat);
         }
 
         [Authorize(Roles = "Admin")]

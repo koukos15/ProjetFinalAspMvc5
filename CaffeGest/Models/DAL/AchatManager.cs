@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaffeGest.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,10 @@ namespace CaffeGest.Models.DAL
             {
                 using (ApplicationDbContext ctx = new ApplicationDbContext())
                 {
+                    //mise a jour de la quntite du produit
+                    Produit unProduit = ProduitsServices.GetById(unAchat.ProduitId, ctx);
+                    unProduit.QuantiteStock += unAchat.QteAchetee;
+
                     ctx.Achats.Add(unAchat);
                     ctx.SaveChanges();
                 }
@@ -39,6 +44,11 @@ namespace CaffeGest.Models.DAL
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
                 Achat achat = GetById(unAchat.Id, ctx);
+
+                //mise a jour de la quantite du produit
+                int qte = unAchat.QteAchetee - achat.QteAchetee;
+                Produit unProduit = ProduitsServices.GetById(unAchat.ProduitId, ctx);
+                unProduit.QuantiteStock += qte;
 
                 achat.DateAchat = unAchat.DateAchat;
                 achat.QteAchetee = unAchat.QteAchetee;

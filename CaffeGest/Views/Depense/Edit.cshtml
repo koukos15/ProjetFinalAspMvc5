@@ -1,52 +1,61 @@
 ﻿@using CaffeGest.Models
 @model Depense
+   
+<br />
 @{
     ViewBag.Title = "Modifier une depense";
 }
 
 <h2>@ViewBag.Title</h2>
+<br/>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion des Depenses</h2>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(a => a.Description, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Description")
+                @Html.TextBoxFor(a => a.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.Description, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.Description, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Description")
-            @Html.TextBoxFor(a => a.Description, new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.Description)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.DateDepense, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Depense")
+                @Html.TextBoxFor(a => a.DateDepense, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
+                @Html.ValidationMessageFor(a => a.DateDepense, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(a => a.DateDepense, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Date Depense")
-            @Html.TextBoxFor(a => a.DateDepense, htmlAttributes: new { @class = "form-control", @Type = "date" }, format: "{0:yyyy-MM-dd}")
-            @Html.ValidationMessageFor(a => a.DateDepense)
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(a => a.Montant)
-        </div>
+            <div class="form-group">
+                @Html.LabelFor(a => a.Montant, new { @class = "control-label col-md-2" })
+                @Html.TextBoxFor(a => a.Montant, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.Montant, "", htmlAttributes: new { @class = "text-danger col-md-offset-2" })
+            </div>
 
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Enregistrer" />
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Enregistrer" />
+                </div>
             </div>
         </div>
-    </div>
 
-}
+    }
+
+    <br />
+</div>
 
 @Html.ActionLink("Retour", "Index")
 
-@*pour la validation cote client*@
-@section scripts{
-    @Scripts.Render("~/bundles/jqueryval")
+    @*pour la validation cote client*@
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryval")
 
-}
->
+    }
 
 
 

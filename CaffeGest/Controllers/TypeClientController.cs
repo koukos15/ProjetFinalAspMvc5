@@ -63,8 +63,7 @@ namespace CaffeGest.Controllers
             if (this.ModelState.IsValid)
             {
                 TypeClientService.Edit(tp);
-                return RedirectToAction("ListTypeClients",
-                   new { id = tp.Id });
+                return RedirectToAction("ListTypeClients");
             }
             return View(tp);
         }

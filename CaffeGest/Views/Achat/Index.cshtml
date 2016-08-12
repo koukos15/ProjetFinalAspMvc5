@@ -4,77 +4,80 @@
 @{
     ViewBag.Title = "Liste des Achats";
 }
-
-<br />
 @TempData["msg"]
 <br />
 <h2>@ViewBag.Title</h2>
 <br />
+@Html.ActionLink("Ajouter", actionName:"Add", controllerName:"Achat",routeValues:"", htmlAttributes: new { @class= "btn btn-info" })
 <br />
-@Html.ActionLink("Ajouter", "Add")
 <br />
-<br />
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="panel-title">Gestion des Achat</h2>
+    </div>
+    <br />
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
 
-@using (Html.BeginForm())
-{
-    <div class="form-horizontal">
+            <div class="form-group">
+                @Html.Label("Date de Debut de la periode", new { @class = "control-label col-md-2" })
+                @Html.TextBox("dateDebut", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+            </div>
 
-        <div class="form-group">
-            @Html.Label("Date de Debut de la periode", new { @class = "control-label col-md-2" })
-            @Html.TextBox("dateDebut", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
-        </div>
+            <div class="form-group">
+                @Html.Label("Date de Fin de la periode", new { @class = "control-label col-md-2" })
+                @Html.TextBox("dateFin", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
+            </div>
 
-        <div class="form-group">
-            @Html.Label("Date de Fin de la periode", new { @class = "control-label col-md-2" })
-            @Html.TextBox("dateFin", "", format: "{0:yyyy-MM-dd}", htmlAttributes: new { @class = "form-control", @Type = "date" })
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2">
-                <input type="submit" value="Valider" />
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <input type="submit" value="Valider" />
+                </div>
             </div>
         </div>
-    </div>
-}
-<br />
-<br />
-@if (Model != null)
-{
-    <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>Nom Produit</th>
-            <th>Nom Fournisseur</th>
-            <th>Date</th>
-            <th>Quantite</th>
-            <th>Prix Unitaire</th>
-            <th>Montant</th>
-            <th>Action</th>
-        </tr>
-        @foreach (Achat a in Model)
-        {
+    }
+    <br />
+    <br />
+    @if (Model != null)
+    {
+        <table class="table">
             <tr>
-                <td>@a.Id</td>
-                <td>@a.Produit.Nom</td>
-                <td>@a.Fournisseur.Nom</td>
-                <td format ="{0:yyyy-MM-dd}" Type = "date">@a.DateAchat</td>
-                <td>@a.QteAchetee</td>
-                <td>@a.Produit.PU</td>
-                <td>@a.Montant</td>
-
-                @if(User.IsInRole("Admin")){
-                <td>
-                    @Html.ActionLink("Editer", "Edit", routeValues: new { id = a.Id })
-                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = a.Id },
-                htmlAttributes: new { @class = "btnDelete" })
-                </td>
-                }
-               
+                <th>Id</th>
+                <th>Nom Produit</th>
+                <th>Nom Fournisseur</th>
+                <th>Date</th>
+                <th>Quantite</th>
+                <th>Prix Unitaire</th>
+                <th>Montant</th>
+                <th>Action</th>
             </tr>
-        }
+            @foreach (Achat a in Model)
+            {
+                <tr>
+                    <td>@a.Id</td>
+                    <td>@a.Produit.Nom</td>
+                    <td>@a.Fournisseur.Nom</td>
+                    <td format="{0:yyyy-MM-dd}" Type="date">@a.DateAchat</td>
+                    <td>@a.QteAchetee</td>
+                    <td>@a.Produit.PU</td>
+                    <td>@a.Montant</td>
 
-    </table>
-}
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <td>
+                            @Html.ActionLink("Editer", "Edit", routeValues: new { id = a.Id }, htmlAttributes: new { @class="btn btn-warning"})
+                            @Html.ActionLink("Delete", "Delete", routeValues: new { id = a.Id },
+                htmlAttributes: new { @class = "btnDelete btn btn-danger" })
+                        </td>
+                    }
+
+                </tr>
+            }
+
+        </table>
+    }
+</div>
 
 @section scripts{
     <script>

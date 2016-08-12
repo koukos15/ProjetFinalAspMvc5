@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaffeGest.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,12 +8,17 @@ namespace CaffeGest.Models.DAL
 {
     public class SortieManager
     {
+
         public static void Add(Sortie uneSortie)
         {
             try
             {
                 using (ApplicationDbContext ctx = new ApplicationDbContext())
                 {
+                    //mise a jour de la quqntite du produit
+                    Produit unProduit = ProduitsServices.GetById(uneSortie.ProduitId, ctx);
+                    unProduit.QuantiteStock -= uneSortie.QteSortie;
+
                     ctx.Sorties.Add(uneSortie);
                     ctx.SaveChanges();
                 }
@@ -38,7 +44,14 @@ namespace CaffeGest.Models.DAL
         {
             using (ApplicationDbContext ctx = new ApplicationDbContext())
             {
+                     
                 Sortie uneSortie = GetById(sortie.Id, ctx);
+
+                //mise a jour de la quantite du produit
+                int qte = sortie.QteSortie - uneSortie.QteSortie;
+                Produit unProduit = ProduitsServices.GetById(sortie.ProduitId, ctx);
+                unProduit.QuantiteStock -= qte;
+
                 uneSortie.DateSortie = sortie.DateSortie;
                 uneSortie.ClientId = sortie.ClientId;
                 uneSortie.Montant = sortie.Montant;

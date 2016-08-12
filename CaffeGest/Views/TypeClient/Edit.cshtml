@@ -1,13 +1,18 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using CaffeGest.Models
+﻿@using CaffeGest.Models
 @model TypeClient
 
+@{
+    ViewBag.Title = "Editer un Type de client";
+
+}
+<br />
+<h2>@ViewBag.Title</h2>
+<br />
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Editer Type de client</h2>
+        <h2 class="panel-title">Gestion du Type de clients</h2>
+    </div>
+    <br />
         @using (Html.BeginForm())
         {
             <div class="form-horizontal">
@@ -24,5 +29,6 @@
                 </div>
             </div>
         }
-    </div>
 </div>
+
+@Html.ActionLink("Retour", "ListTypeClients")

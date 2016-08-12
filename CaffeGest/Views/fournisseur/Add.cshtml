@@ -1,13 +1,18 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@using CaffeGest.Models
+﻿@using CaffeGest.Models
 @model Fournisseur
 
+@{
+
+    ViewBag.Title = "Ajouter un fournisseur";
+}
+<br />
+<h2>@ViewBag.Title</h2>
+<br />
 <div class="panel panel-success">
     <div class="panel-heading">
-        <h2 class="mettre un grand coe = gestion des produits">Add</h2>
+        <h2 class="panel-title">Gestion des fournisseurs</h2>
+    </div>
+    <br />
         @using (Html.BeginForm())
         {
             <div class="form-horizontal">
@@ -43,6 +48,7 @@
                 </div>
             </div>
         }
-    </div>
 </div>
+
+@Html.ActionLink("Retour", "ListFournisseurs")
 

@@ -22,7 +22,7 @@
 
         @if (User.IsInRole("Admin"))
         {
-            @Html.ActionLink("Gestion des Achats", actionName: "index", controllerName: "Bilan", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
+            @Html.ActionLink("Bilan", actionName: "index", controllerName: "Bilan", routeValues: "", htmlAttributes: new { @class = "btn btn-primary" })
         }
     </div>
     <br /><br />

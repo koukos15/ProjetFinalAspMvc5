@@ -18,7 +18,7 @@ namespace CaffeGest.Controllers
             string dateFin = this.Request.Form.Get("dateFin");
             double montantAchat= 0;
             double montantDepense = 0;
-            double? montantVente = null;
+            double? montantVente = 0;
             double benefice = 0 ;
             if (dateDebut != null && dateFin != null)
             {
