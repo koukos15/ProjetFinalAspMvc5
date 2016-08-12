@@ -1,0 +1,63 @@
+﻿
+@{ 
+    List<Photo> lesPhotos =  this.ViewBag.Photos;
+}
+
+@using CaffeGest.Models
+@model Produit
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h2 class="mettre un grand coe = gestion des produits">Add</h2>
+        <div class="page-header">
+            <h2>Liste des Photos des Produits</h2>
+            @Html.ActionLink("Retour à la liste des Produits", "ListProduits", "produit")
+            <p>@ViewBag.Message</p>
+        </div>
+
+        @using (Html.BeginForm("ProduitPhotos", "Produit", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("Photo")
+                <input type="file" id="Photo" name="upload" />
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="principal" value="true" /> Est Principal
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Ajouter photo" class="btn btn-primary" />
+               @* @Html.ActionLink("Ajouter","Save", new { Id = @Model.Id })*@
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+
+    @if (Model.Photos == null || Model.Photos.Count <= 0)
+    {
+        <p>Aucune photos</p>
+    }
+    else
+    {
+        foreach (Photo m in Model.Photos)
+        {
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <img src="~/Image/@m.ImgPath" alt="">
+                    <p>
+                        @Html.ActionLink("Supprimer", "DeletePhoto", new { Id = m.Id, ProduitId = Model.Id },
+                        new
+                        {
+                            @class = "btn btn-danger btn-sm",
+                            onclick = "return confirm('Êtes-vous sûr de vouloir supprimer cette photo?');"
+                        })
+                    </p>
+                </div>
+            </div>
+        }
+    }
+
+</div>
